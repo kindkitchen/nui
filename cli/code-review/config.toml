@@ -1,0 +1,13 @@
+### ATTENTION! ###################
+#
+# The code-review comments are not
+# worked in this file with purpose.
+# And so should not.
+#
+###################################
+
+# Markers of code-review comments. Change them with `just config-set code-review`,
+# which keeps existing comments consistent. This file is never scanned.
+marker-start = "review-start"
+marker-end = "review-end"
+marker-meta = "(meta):"
