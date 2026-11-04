@@ -9,13 +9,17 @@ const root = path self ../..
 #
 # Clones this repository into ./<name> at the 01-01-init tag, starts the
 # <name>/main branch there and registers it as a submodule tracking it.
+# The submodule points to the origin remote; without one, --allow-local-remote
+# points it to this local repository, until `git submodule set-url`.
 # Only observes by default; --apply makes the changes. They are staged,
 # not committed; nothing is pushed.
 @example "observe what would be affected" { just create submodule --name=example }
 @example "make the changes" { just create submodule --name=example --apply }
+@example "no origin remote yet" { just create submodule --name=example --allow-local-remote --apply }
 def main [
-    --name: string  # Sub-project name: its folder and branch/tag prefix.
-    --apply         # Make the changes instead of only showing them.
+    --name: string        # Sub-project name: its folder and branch/tag prefix.
+    --allow-local-remote  # Without an origin remote, point the submodule to this local repository.
+    --apply               # Make the changes instead of only showing them.
 ] {
     cd $root
 
@@ -32,8 +36,9 @@ def main [
     if ($gitdir | path exists) { fail $"($gitdir) already exists, left by a removed submodule" }
     if (git rev-parse --verify --quiet $"refs/tags/($start)" | complete).exit_code != 0 { fail $"tag ($start) not found" }
     let origin = git remote get-url origin | complete
-    if $origin.exit_code != 0 { fail "no origin remote to point the submodule to" }
-    let url = $origin.stdout | str trim
+    let url = if $origin.exit_code == 0 { $origin.stdout | str trim } else if $allow_local_remote { $root } else {
+        fail "no origin remote to point the submodule to: add one, or add --allow-local-remote to point it to this local repository"
+    }
 
     # The plan: what each step affects and the exact command it runs.
     let steps = [
