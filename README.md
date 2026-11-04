@@ -1,9 +1,12 @@
-# About
+# ~~t~~nui (~~Terminal~~Nik's User Interface)
 
-~~t~~nui (~~Terminal~~Nik's User Interface)
+This is terminal-multiplexer forgery.
+So it's pretty common to have submodules, which are started with `v0.1.0-nui-<example-name>`
+and this is not library but application modules.
+Each such variant is technically independent but probably may be inspired or affected
+by some other sibling.
 
-
-# Codebase organization
+## Codebase organization
 
 Organized as a monorepo by conventions only: no monorepo tool, neither third-party nor custom.
 
@@ -26,23 +29,23 @@ Organized as a monorepo by conventions only: no monorepo tool, neither third-par
 - Code-review comments are notes marked in any file, so a place in the code speaks for itself: `cli/code-review/readme.md`.
 - `prompt/<name>/` holds agent prompts in the skill format, used only when referenced explicitly, e.g. `./prompt/code-review`.
 
-# Agentic instructions
+## Agentic instructions
 
-## Common
+#### Common
 
 - Act only on explicit user intent. Nothing implicit unless it was explicitly allowed.
 - Work in explicitly defined, incremental steps. Clarify until agree on each step with the user before moving on.
 - Keep output and writes minimal. If not writing gives the same result, don't write.
 - Focus on quality where quality is defined as efficient and sophisticated solution.
 
-## Chat
+#### Chat
 
 - Be concise. No filler or unrequested elaboration.
 - Raise any unplanned improvement, issue or warning as a short notice. Expand only if the user asks.
 
-## Coding
+#### Coding
 
-## Responsibilities
+#### Responsibilities
 
 - Before any write, state what will change and where. Write only after approval.
 - Every action must be traceable to a user task or intention.
