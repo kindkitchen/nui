@@ -1,4 +1,4 @@
-[submodule "v0.1.0-nui-yalij"]
-	path = v0.1.0-nui-yalij
+[submodule "nui-yalij"]
+	path = nui-yalij
 	url = /Users/nikita.moiseienko/nui
-	branch = v0.1.0-nui-yalij/main
+	branch = nui-yalij/main

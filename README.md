@@ -1,7 +1,7 @@
 # ~~t~~nui (~~Terminal~~Nik's User Interface)
 
 This is terminal-multiplexer forgery.
-So it's pretty common to have submodules, which are started with `v0.1.0-nui-<example-name>`
+So it's pretty common to have submodules, which are started with `nui-<example-name>`
 and this is not library but application modules.
 Each such variant is technically independent but probably may be inspired or affected
 by some other sibling.
@@ -11,7 +11,7 @@ by some other sibling.
 Organized as a monorepo by conventions only: no monorepo tool, neither third-party nor custom.
 
 - The root belongs to no application: no `package.json`, `Cargo.toml` or similar manifest. It is the developer-oriented place: overview, shared files, helper scripts and anything else supporting the whole project.
-- Applications (sub-projects) live in top-level folders, each with the files typical for its kind. Tech stacks may differ per sub-project.
+- Applications (sub-projects) live in top-level folders, named without a version, each with the files typical for its kind. Tech stacks may differ per sub-project.
 - Each sub-project is a separate git repository, managed here as a git submodule.
 - All submodules point to this same repository, each tracking its own branch. Every sub-project history starts from the `01-01-init` tag.
 - Branches and tags of a sub-project are prefixed with its name: `example/main`, `example/dev`, `example-001-tag`.
