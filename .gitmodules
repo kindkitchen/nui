@@ -1,4 +1,4 @@
 [submodule "nui-yalij"]
 	path = nui-yalij
-	url = /Users/nikita.moiseienko/nui
+	url = https://github.com/kindkitchen/nui-yalij.git
 	branch = nui-yalij/main

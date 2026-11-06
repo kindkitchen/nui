@@ -47,6 +47,12 @@ retrieve target="" *args:
 status target="" *args:
     def --wrapped main [...args] { nu cli/main.nu status ...$args }
 
+# Sync a target.
+[group('actions')]
+[script]
+sync target="" *args:
+    def --wrapped main [...args] { nu cli/main.nu sync ...$args }
+
 # Test a target.
 [group('actions')]
 [script]
